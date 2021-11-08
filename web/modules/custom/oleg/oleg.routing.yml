@@ -1,0 +1,7 @@
+oleg.cats:
+  path: '/oleg/cats'
+  defaults:
+    _controller: '\Drupal\oleg\Controller\OlegController::catsPage'
+    _title: 'Hello! You can add here a photo of your cat.'
+  requirements:
+    _permission: 'access content'
