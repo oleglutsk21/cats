@@ -1,0 +1,16 @@
+.header {
+  min-height: 550px;
+  background-image: url("../images/header_background2.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .navbar-header,
+  .navbar-collapse {
+    color: black;
+    background-color: #42a877;
+  }
+  .menu.navbar-nav li a {
+    color: black;
+    text-transform: uppercase;
+  }
+}
