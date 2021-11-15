@@ -423,3 +423,16 @@ template {
   width: 100px;
   text-transform: uppercase;
 }
+
+.oleg-form .form__submit-result {
+  padding: 20px 0;
+  font-size: 20px;
+}
+
+.oleg-form .result-valid {
+  color: green;
+}
+
+.oleg-form .result-invalid {
+  color: red;
+}

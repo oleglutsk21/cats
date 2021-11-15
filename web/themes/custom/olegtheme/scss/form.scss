@@ -14,4 +14,14 @@
     width: 100px;
     text-transform: uppercase;
   }
+  .form__submit-result {
+    padding: 20px 0;
+    font-size: 20px;
+  }
+  .result-valid {
+    color: green;
+  }
+  .result-invalid {
+    color: red;
+  }
 }
