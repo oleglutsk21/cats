@@ -37,8 +37,20 @@ class OlegForm extends FormBase {
     return $form;
   }
 
+  /**
+   * Custom validation form
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $catsName = $form_state->getValue('cats_name');
+    if (strlen($catsName) < 2 || strlen($catsName) > 32) {
+      $form_state->setErrorByName('cats_name', $this->t('Sorry, the name you entered is not correct, please enter the correct name.'));
+    } else {
+      \Drupal::messenger()->addMessage($this->t('Your cat\'s name is: ' . $catsName));
+    }
+  }
+
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    \Drupal::messenger()->addMessage($this->t("Your cat's name is: " . $form_state->getValue('cats_name')));
+
   }
 
 }
