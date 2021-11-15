@@ -15,9 +15,6 @@ class OlegController extends ControllerBase {
    *   A simple renderable array.
    */
   public function catsPage() {
-    return [
-      '#markup' => '',
-      ];
+    return \Drupal::formBuilder()->getForm('\Drupal\oleg\Form\OlegForm');
   }
-
 };

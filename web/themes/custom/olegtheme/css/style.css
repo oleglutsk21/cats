@@ -400,3 +400,26 @@ template {
   color: black;
   text-transform: uppercase;
 }
+
+.oleg-form .form-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.oleg-form .form-item .control-label {
+  width: 15%;
+  margin-right: 15px;
+}
+
+.oleg-form .form-item .form-text {
+  width: auto;
+}
+
+.oleg-form .form-submit {
+  width: 100px;
+  text-transform: uppercase;
+}

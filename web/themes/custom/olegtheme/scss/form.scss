@@ -1,0 +1,17 @@
+.oleg-form {
+  .form-item {
+    display: flex;
+    align-items: center;
+    .control-label {
+      width: 15%;
+      margin-right: 15px;
+    }
+    .form-text {
+      width: auto;
+    }
+  }
+  .form-submit {
+    width: 100px;
+    text-transform: uppercase;
+  }
+}
