@@ -415,7 +415,8 @@ template {
   margin-right: 15px;
 }
 
-.oleg-form .form-item .form-text {
+.oleg-form .form-item .form-text,
+.oleg-form .form-item .form-email {
   width: auto;
 }
 
