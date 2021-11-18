@@ -66,6 +66,7 @@ class OlegForm extends FormBase {
         'file_validate_extensions' => ['jpeg jpg png'],
         'file_validate_size' => [2097152]
       ],
+      '#upload_location' => 'public://images',
       '#attributes' => [
         'autocomplete' => 'off',
       ],

@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Install, custom oleg module.
+ */
+
+/**
+ * {@inheritDoc}
+ */
+
+function oleg_schema() {
+  $schema['oleg'] = [
+    'description' => 'Database table for oleg module',
+    'fields' => [
+      'id' => [
+        'description' => 'ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'cat_name' => [
+        'description' => 'User cat name',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'email' => [
+        'description' => 'User email',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'cat_photo' => [
+        'description' => 'User cat photo',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'date' => [
+        'description' => 'Date when the data was added ',
+        'type' => 'int',
+        'not null' => TRUE,
+
+      ],
+    ],
+    'primary key' => ['id']
+  ];
+
+  return $schema;
+}
