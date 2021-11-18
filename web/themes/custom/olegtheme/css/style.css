@@ -416,7 +416,8 @@ template {
 }
 
 .oleg-form .form-item .form-text,
-.oleg-form .form-item .form-email {
+.oleg-form .form-item .form-email,
+.oleg-form .form-item .form-file {
   width: auto;
 }
 

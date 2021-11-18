@@ -58,12 +58,25 @@ class OlegForm extends FormBase {
       ],
     ];
 
+    $form['cats_photo'] = [
+      '#type' => 'file',
+      '#title' => $this->t('Your cat\'s photo:'),
+      '#required' => TRUE,
+      '#upload_validators' => [
+        'file_validate_extensions' => ['jpeg jpg png'],
+        'file_validate_size' => [2097152]
+      ],
+      '#attributes' => [
+        'autocomplete' => 'off',
+      ],
+    ];
+
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Add cat'),
       '#ajax' => [
         'callback' => '::ajaxSubmitForm',
-        //'event' => 'click',
+        'event' => 'click',
       ]
     ];
 
