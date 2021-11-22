@@ -9,7 +9,7 @@
  * {@inheritDoc}
  */
 
-function oleg_schema() {
+function oleg_schema(): array {
   $schema['oleg'] = [
     'description' => 'Database table for oleg module',
     'fields' => [

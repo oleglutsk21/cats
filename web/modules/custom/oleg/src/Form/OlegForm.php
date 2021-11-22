@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CssCommand;
+use Drupal\file\Entity\File;
 
 /**
  * Our custom Oleg form class.
@@ -17,7 +18,7 @@ class OlegForm extends FormBase {
   /**
    * {@inheritdoc }
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'oleg_form';
   }
 
@@ -59,14 +60,14 @@ class OlegForm extends FormBase {
     ];
 
     $form['cats_photo'] = [
-      '#type' => 'file',
+      '#type' => 'managed_file',
       '#title' => $this->t('Your cat\'s photo:'),
       '#required' => TRUE,
       '#upload_validators' => [
         'file_validate_extensions' => ['jpeg jpg png'],
         'file_validate_size' => [2097152]
       ],
-      '#upload_location' => 'public://images',
+      '#upload_location' => 'public://cats_photo/',
       '#attributes' => [
         'autocomplete' => 'off',
       ],
@@ -135,6 +136,22 @@ class OlegForm extends FormBase {
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $cat_photo = $form_state->getValue('cats_photo');
+    //date_default_timezone_set('UTC');
+    $data = [
+      'cat_name' => $form_state->getValue('cats_name'),
+      'email' => $form_state->getValue('email'),
+      'cat_photo' => $cat_photo[0],
+      'date' => \Drupal::time()->getCurrentTime(),
+    ];
+
+    // save file as Permanent
+    $file = File::load($cat_photo[0]);
+    $file->setPermanent();
+    $file->save();
+
+    // insert data to database
+    \Drupal::database()->insert('oleg')->fields($data)->execute();
   }
 
 }
