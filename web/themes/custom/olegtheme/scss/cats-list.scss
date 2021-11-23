@@ -1,0 +1,21 @@
+.cats__items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.cats__item {
+  width: 49%;
+  margin-bottom: 30px;
+}
+.cat-photo {
+  display: inline-block;
+}
+.cat__photo-link {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+.cat__user-info {
+  display: flex;
+  justify-content: space-between;
+}

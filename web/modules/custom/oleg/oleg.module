@@ -1,0 +1,17 @@
+<?php
+
+
+/**
+ * Implements hook_theme().
+ */
+function oleg_theme($existing, $type, $theme, $path) {
+
+  return [
+    'cats-list' => [
+      'variables' => [
+        'form'=> [],
+        'row' => [],
+      ],
+    ],
+  ];
+}

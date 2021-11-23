@@ -1,0 +1,16 @@
+<div class="cats__form">
+{{ form }}
+</div>
+
+<div class="cats__items">
+    {% for items in row %}
+        <div class="cats__item">
+            <h3 class="cat__name">{{ items.cat_name }}</h3>
+            <div class="cat__user-info">
+                <span class="cat__user-email"><a class="user__email-link" href="mailto:{{ items.email }}">{{ items.email }}</a></span>
+                <span class="cat__created-on">{{ items.date |date('d-m-Y H:i:s') }}</span>
+            </div>
+            <div class="cat__photo"><a class="cat__photo-link" href="{{ items.url }}" target="_blank">{{ items.cat_photo }}</a></div>
+        </div>
+    {% endfor %}
+</div>

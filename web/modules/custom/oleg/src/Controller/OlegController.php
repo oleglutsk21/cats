@@ -17,8 +17,11 @@ class OlegController extends ControllerBase {
    */
   public function catsPage(): array {
     $catForm = \Drupal::formBuilder()->getForm('\Drupal\oleg\Form\OlegForm');
-    $dataList = $this->showDataList();
-    return [$catForm, $dataList] ;
+    return [
+      '#theme' => 'cats-list',
+      '#form' => $catForm,
+      '#row' => $this->showDataList(),
+      ];
   }
 
   public function showDataList() {
@@ -31,13 +34,14 @@ class OlegController extends ControllerBase {
     $rows = [];
 
     foreach ($result as $data) {
+      $uri = File::load($data->cat_photo)->getFileUri();
+      $url = file_create_url($uri);
       $cat_photo = [
         '#theme' => 'image',
-        '#uri' => File::load($data->cat_photo)->getFileUri(),
+        '#uri' => $uri,
         '#attributes' => [
-          'class' => 'cat-picture',
+          'class' => 'cat-photo',
           'alt' => $data->cat_name . ' photo',
-          'width' => 200,
         ]
       ];
 
@@ -47,14 +51,10 @@ class OlegController extends ControllerBase {
         'email' => $data->email,
         'cat_photo' => $cat_photo,
         'date' => $data->date,
+        'url' => $url,
       ];
     }
-    // render table
-    $createList['table'] = [
-      '#type' => 'table',
-      '#rows' => $rows,
-      '#empty' => t('No data found')
-    ];
-    return $createList;
+
+    return $rows;
   }
 }
