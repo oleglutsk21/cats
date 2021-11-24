@@ -5,3 +5,11 @@ oleg.cats:
     _title: 'Hello! You can add here a photo of your cat.'
   requirements:
     _permission: 'access content'
+
+oleg.delete_form:
+  path: '/admin/oleg/{id}/delete'
+  defaults:
+    _form: '\Drupal\oleg\Form\DeleteForm'
+    _title: 'Delete form'
+  requirements:
+    _permission: 'administer site configuration'

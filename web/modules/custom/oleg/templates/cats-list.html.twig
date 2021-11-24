@@ -11,6 +11,12 @@
                 <span class="cat__created-on">{{ items.date |date('d-m-Y H:i:s') }}</span>
             </div>
             <div class="cat__photo"><a class="cat__photo-link" href="{{ items.url }}" target="_blank">{{ items.cat_photo }}</a></div>
+            {% if user.hasPermission('administer nodes') %}
+                <div class="form-control__buttons">
+                    {{ items.delete }}
+                    <a class="btn-success btn" >Edit</a>
+                </div>
+            {% endif %}
         </div>
     {% endfor %}
 </div>

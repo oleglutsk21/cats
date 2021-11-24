@@ -3,6 +3,8 @@ namespace Drupal\oleg\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\file\Entity\File;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 /**
  * Provides route responses for the Example module.
@@ -28,7 +30,7 @@ class OlegController extends ControllerBase {
 
     // get data from database
     $query = \Drupal::database()->select('oleg', 'ol');
-    $query->fields('ol', ['cat_name', 'email', 'cat_photo', 'date']);
+    $query->fields('ol', ['id', 'cat_name', 'email', 'cat_photo', 'date']);
     $query->orderBy('ol.date', 'DESC');
     $result = $query->execute()->fetchAll();
     $rows = [];
@@ -36,6 +38,20 @@ class OlegController extends ControllerBase {
     foreach ($result as $data) {
       $uri = File::load($data->cat_photo)->getFileUri();
       $url = file_create_url($uri);
+      $urlDelete = Url::fromRoute('oleg.delete_form', ['id' => $data->id], []);
+      $linkDelete = [
+        '#type' => 'link',
+        '#title' => 'Delete',
+        '#url' => $urlDelete,
+        '#options' => [
+          'attributes' => [
+            'class' => ['use-ajax btn btn-danger'],
+            'data-dialog-type' => 'modal',
+          ],
+        ],
+      ];
+        //Link::fromTextAndUrl('Delete', $urlDelete);
+
       $cat_photo = [
         '#theme' => 'image',
         '#uri' => $uri,
@@ -47,11 +63,13 @@ class OlegController extends ControllerBase {
 
       //get data
       $rows[] = [
+        'id' => $data->id,
         'cat_name' => $data->cat_name,
         'email' => $data->email,
         'cat_photo' => $cat_photo,
         'date' => $data->date,
         'url' => $url,
+        'delete' => $linkDelete,
       ];
     }
 

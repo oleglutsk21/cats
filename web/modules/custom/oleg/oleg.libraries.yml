@@ -1,0 +1,4 @@
+oleg:
+  dependencies:
+    - core/jquery
+    - core/ajax
