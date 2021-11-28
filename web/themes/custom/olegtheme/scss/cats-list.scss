@@ -4,18 +4,29 @@
   flex-wrap: wrap;
 }
 .cats__item {
-  width: 49%;
   margin-bottom: 30px;
+  padding: 0 15px;
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  border: solid;
 }
-.cat-photo {
-  display: inline-block;
-}
-.cat__photo-link {
+.cat__photo {
   width: 100%;
-  display: block;
-  text-align: center;
+  height: 400px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  &-link {
+    display: block;
+    text-align: center;
+  }
 }
 .cat__user-info {
   display: flex;
   justify-content: space-between;
+}
+.form-control__buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

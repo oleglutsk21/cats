@@ -23,7 +23,7 @@ class OlegController extends ControllerBase {
       '#theme' => 'cats-list',
       '#form' => $catForm,
       '#row' => $this->showDataList(),
-      ];
+    ];
   }
 
   public function showDataList() {
@@ -75,4 +75,5 @@ class OlegController extends ControllerBase {
 
     return $rows;
   }
+
 }

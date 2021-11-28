@@ -19,45 +19,40 @@ class DeleteForm extends ConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormId()
-  {
+  public function getFormId() {
     return 'delete_form';
   }
 
-  public function getQuestion()
-  {
+  public function getQuestion() {
     return t('Delete data');
   }
 
-  public function getCancelUrl()  {
+  public function getCancelUrl() {
     return new Url('oleg.cats');
   }
 
-  public function getDescription()  {
+  public function getDescription() {
     return t('Do you want to delete this cat ?');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getConfirmText()
-  {
+  public function getConfirmText() {
     return t('Delete it');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getCancelText()
-  {
+  public function getCancelText() {
     return t('Cancel');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, $id = NULL)
-  {
+  public function buildForm(array $form, FormStateInterface $form_state, $id = NULL) {
     $this->id = $id;
     return parent::buildForm($form, $form_state);
   }
@@ -65,13 +60,12 @@ class DeleteForm extends ConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state)
-  {
+  public function submitForm(array &$form, FormStateInterface $form_state) {
     $query = \Drupal::database();
     $query->delete('oleg')
       ->condition('id', $this->id)
       ->execute();
-    \Drupal::messenger()->addStatus('Succesfully deleted.');
+    \Drupal::messenger()->addStatus('Successfully deleted.');
     $form_state->setRedirect('oleg.cats');
   }
 }
