@@ -21,3 +21,19 @@ oleg.edit_form:
     _title: 'Edit form'
   requirements:
     _permission: 'administer site configuration'
+
+oleg.admin_cats:
+  path: '/admin/structure/cats-list'
+  defaults:
+    _title: 'Cats list'
+    _form: 'Drupal\oleg\Form\AdminForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+oleg.delete_admin_form:
+  path: '/admin/structure/delete-cats'
+  defaults:
+    _title: 'Delete cats'
+    _form: '\Drupal\oleg\Form\DeleteAdminForm'
+  requirements:
+    _permission: 'administer site configuration'
