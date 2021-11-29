@@ -9,7 +9,10 @@
     color: black;
     background-color: #42a877;
   }
-  .menu.navbar-nav li a {
+  .navbar-header {
+    width: 100%;
+  }
+    .menu.navbar-nav li a {
     color: black;
     text-transform: uppercase;
   }

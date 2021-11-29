@@ -396,6 +396,10 @@ template {
   background-color: #42a877;
 }
 
+.header .navbar-header {
+  width: 100%;
+}
+
 .header .menu.navbar-nav li a {
   color: black;
   text-transform: uppercase;
