@@ -50,7 +50,19 @@ class OlegController extends ControllerBase {
           ],
         ],
       ];
-        //Link::fromTextAndUrl('Delete', $urlDelete);
+
+      $urlEdit = Url::fromRoute('oleg.edit_form', ['id' => $data->id], []);
+      $linkEdit = [
+        '#type' => 'link',
+        '#title' => 'Edit',
+        '#url' => $urlEdit,
+        '#options' => [
+          'attributes' => [
+            'class' => ['btn btn-success'],
+            //'data-dialog-type' => 'modal',
+          ],
+        ],
+      ];
 
       $cat_photo = [
         '#theme' => 'image',
@@ -58,7 +70,7 @@ class OlegController extends ControllerBase {
         '#attributes' => [
           'class' => 'cat-photo',
           'alt' => $data->cat_name . ' photo',
-        ]
+        ],
       ];
 
       //get data
@@ -70,6 +82,7 @@ class OlegController extends ControllerBase {
         'date' => $data->date,
         'url' => $url,
         'delete' => $linkDelete,
+        'edit' => $linkEdit,
       ];
     }
 

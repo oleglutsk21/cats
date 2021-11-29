@@ -13,3 +13,11 @@ oleg.delete_form:
     _title: 'Delete form'
   requirements:
     _permission: 'administer site configuration'
+
+oleg.edit_form:
+  path: '/admin/oleg/{id}/edit'
+  defaults:
+    _form: '\Drupal\oleg\Form\EditForm'
+    _title: 'Edit form'
+  requirements:
+    _permission: 'administer site configuration'
